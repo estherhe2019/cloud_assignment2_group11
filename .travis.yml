@@ -7,7 +7,11 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install .
+  - pip install pytest-cov
+  - pip install pylint
 
 # command to run tests
 script:
   - pytest
+  - pytest --cov=text_pre_processing
+  - pylint text_pre_processing/text_pre_processing.py
