@@ -46,8 +46,8 @@ setup(
     version = '1.0',
     description = 'This package performs preprocessing for a sentiment analysis task with a CNN + Embedding model',
     url = '#',
-    author = 'Freya',
-    author_email = '',
+    author = 'Chenfei',
+    author_email = 'cs3913@columbia.edu',
     license = 'MIT',
     packages = [
         'text_pre_processing'
