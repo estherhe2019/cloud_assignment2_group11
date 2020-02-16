@@ -1,3 +1,6 @@
+#Dictionary Data
+text_pre_processing/glove/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
