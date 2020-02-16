@@ -68,14 +68,14 @@ class Test(unittest.TestCase):
         self.assertEquals(text, exp_text)
 
     def test_method_tokenize_text_1(self):
-        pp = tp.PreProcessor("This is a simple test with some interesting \U0001F600\U0001F64F 其他语言或字符 within it. https://stackoverflow.com/questions/23337471/how-to-properly-assert-that-an-exception-gets-raised-in-pytest", 10, 100)
+        pp = tp.PreProcessor("This is a simple test with some interesting within it. https://stackoverflow.com/questions/23337471/how-to-properly-assert-that-an-exception-gets-raised-in-pytest", 10, 100)
         pp.clean_text()
         pp.tokenize_text()
         exp_tokens = ["This", "is", "a", "simple", "test", "with", "some", "interesting", "within", "it"]
         tokens = pp.tokens
         self.assertEquals(tokens, exp_tokens)
 
-    def test_method_tokenize_text_1(self):
+    def test_method_tokenize_text_2(self):
         pp = tp.PreProcessor("This is a simple test with some interesting \U0001F600\U0001F64F 其他语言或字符 within it. https://stackoverflow.com/questions/23337471/how-to-properly-assert-that-an-exception-gets-raised-in-pytest", 10, 100)
         pp.clean_text()
         pp.tokenize_text()
