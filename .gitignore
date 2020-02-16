@@ -1,5 +1,5 @@
 #Dictionary Data
-text_pre_processing/glove/*
+text_pre_processing/glove/*.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
