@@ -1,8 +1,10 @@
 import os
 from setuptools import setup
-import pip
 
-if not os.path.exists("./text_pre_processing/glove/glove.6B.50d.txt"):
+curr_dir = os.path.dirname(os.path.realpath(__file__))
+dict_path = os.path.join(curr_dir, "text_pre_processing/glove/glove.6B.50d.txt")
+
+if not os.path.exists(dict_path):
     import urllib
     import urllib.request
     import progressbar
@@ -26,20 +28,18 @@ if not os.path.exists("./text_pre_processing/glove/glove.6B.50d.txt"):
     print("Downloading glove.6B.zip ...")
     urllib.request.urlretrieve(
         "http://nlp.stanford.edu/data/glove.6B.zip",
-        "./text_pre_processing/glove/glove.6B.zip",
+        os.path.join(curr_dir, "text_pre_processing/glove/glove.6B.zip"),
         MyProgressBar())
 
     print("Unzipping files...")
     with zipfile.ZipFile('./text_pre_processing/glove/glove.6B.zip', 'r') as zip_ref:
-        zip_ref.extractall('./text_pre_processing/glove/')
+        zip_ref.extractall(os.path.join(curr_dir, "text_pre_processing/glove/"))
     for remove in [
         './text_pre_processing/glove/glove.6B.zip',
         './text_pre_processing/glove/glove.6B.100d.txt',
         './text_pre_processing/glove/glove.6B.200d.txt',
         './text_pre_processing/glove/glove.6B.300d.txt']:
         os.remove(remove)
-
-    
 
 setup(
     name = 'text_pre_processing',
@@ -56,4 +56,5 @@ setup(
         'nltk',
         'pytest'
     ],
+    include_package_data = True,
     zip_safe = False)
