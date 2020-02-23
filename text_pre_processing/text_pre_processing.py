@@ -33,7 +33,10 @@ class PreProcessor:
             archive = zipfile.ZipFile(archive_path, "r")
             embeddings = archive.read(path_inside).decode("utf8").split("\n")
             for embedding in embeddings:
-                word, idx = embedding.strip().split()
+                try:
+                    word, idx = embedding.strip().split()
+                except:
+                    break
                 if int(idx) > self.max_length_dictionary:
                     break
                 dic[word] = int(idx)
@@ -71,7 +74,7 @@ class PreProcessor:
         """replace each token in a list of tokens by their corresponding
         index in GloVe dictionary and producing a list of indexes
         -1 if word doesn't exists in the dictionary"""
-        idxs = list(map(lambda x: self.emb_dict[x] if x in self.emb_dict else 1, tokens))
+        idxs = list(map(lambda x: self.emb_dict[x.lower()] if x.lower() in self.emb_dict else 1, tokens))
         return idxs
     def pad_sequence(self, idxs):
         """Padding a list of indices with 0 until a maximum length"""
